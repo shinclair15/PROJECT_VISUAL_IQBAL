@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Bulan Mei 2025 pada 18.36
--- Versi server: 10.4.32-MariaDB
--- Versi PHP: 8.2.12
+-- Generation Time: May 28, 2025 at 09:11 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_barang`
+-- Table structure for table `tb_barang`
 --
 
 CREATE TABLE `tb_barang` (
@@ -36,17 +36,17 @@ CREATE TABLE `tb_barang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `tb_barang`
+-- Dumping data for table `tb_barang`
 --
 
 INSERT INTO `tb_barang` (`kd_barang`, `nama_barang`, `jenis_barang`, `harga_beli`, `harga_jual`) VALUES
-('B01', 'Chitato', 'Makanan', 10000, 15000),
-('B02', 'Mogu-Mogu', 'Minuman', 10000, 13000);
+('B01', 'Jose Cuervo', 'Minuman', 500000, 1000000),
+('B02', 'LA ICE PURPLE BOOST', 'Makanan', 30000, 35000);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_isi`
+-- Table structure for table `tb_isi`
 --
 
 CREATE TABLE `tb_isi` (
@@ -58,18 +58,16 @@ CREATE TABLE `tb_isi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `tb_isi`
+-- Dumping data for table `tb_isi`
 --
 
 INSERT INTO `tb_isi` (`id_nota`, `kd_barang`, `h_beli`, `h_jual`, `qty`) VALUES
-('IN0001', 'B01', 10000, 15000, 5),
-('IN0002', 'B01', 10000, 15000, 10),
-('IN0003', 'B02', 10000, 13000, 10);
+('IN0001', 'B02', 30000, 35000, 3);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_kasir`
+-- Table structure for table `tb_kasir`
 --
 
 CREATE TABLE `tb_kasir` (
@@ -83,17 +81,17 @@ CREATE TABLE `tb_kasir` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `tb_kasir`
+-- Dumping data for table `tb_kasir`
 --
 
 INSERT INTO `tb_kasir` (`id_kasir`, `nama_kasir`, `jk_kasir`, `telp_kasir`, `agama_kasir`, `alamat_kasir`, `password_kasir`) VALUES
-('K01', 'Marsel Ruliana Hermawan', 'Laki-Laki', '081310134013', 'Islam', 'Depok', '123'),
-('K02', 'Raisa Aliyya', 'Perempuan', '085175209039', 'Islam', 'Antapani Wetan', '1234');
+('K001', 'Mohamad Iqbal AlFaris', 'Laki-Laki', '089661867138', 'Islam', 'Mekarsari Cimanggis Depok', '1234'),
+('K002', 'Hilwa Nazrya', 'Perempuan', '081234567890', 'Islam', 'Mekarsari', '1234');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_nota`
+-- Table structure for table `tb_nota`
 --
 
 CREATE TABLE `tb_nota` (
@@ -104,18 +102,16 @@ CREATE TABLE `tb_nota` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `tb_nota`
+-- Dumping data for table `tb_nota`
 --
 
 INSERT INTO `tb_nota` (`id_nota`, `tgl_nota`, `id_pel`, `id_kasir`) VALUES
-('IN0001', '2025-05-27', 'P01', 'K01'),
-('IN0002', '2025-05-27', 'P01', 'K01'),
-('IN0003', '2025-05-27', 'P02', 'K01');
+('IN0001', '2025-05-28', 'P02', 'K001');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_pelanggan`
+-- Table structure for table `tb_pelanggan`
 --
 
 CREATE TABLE `tb_pelanggan` (
@@ -127,37 +123,37 @@ CREATE TABLE `tb_pelanggan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `tb_pelanggan`
+-- Dumping data for table `tb_pelanggan`
 --
 
 INSERT INTO `tb_pelanggan` (`id_pel`, `nama_pel`, `jk_pel`, `telp_pel`, `alamat_pel`) VALUES
-('P01', 'Marsel Ruliana Hermawan', 'Laki-Laki', '081310134013', 'Depok'),
-('P02', 'Raisa Aliyya Roseli', 'Perempuan', '085175209039', 'Bandung');
+('P01', 'Iqbal', 'Laki-Laki', '089661867138', 'Mekarsari Cimanggis Depok'),
+('P02', 'Hilwa Nazrya', 'Perempuan', '081234567890', 'Mekarsari');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `tb_barang`
+-- Indexes for table `tb_barang`
 --
 ALTER TABLE `tb_barang`
   ADD PRIMARY KEY (`kd_barang`);
 
 --
--- Indeks untuk tabel `tb_kasir`
+-- Indexes for table `tb_kasir`
 --
 ALTER TABLE `tb_kasir`
   ADD PRIMARY KEY (`id_kasir`);
 
 --
--- Indeks untuk tabel `tb_nota`
+-- Indexes for table `tb_nota`
 --
 ALTER TABLE `tb_nota`
   ADD PRIMARY KEY (`id_nota`);
 
 --
--- Indeks untuk tabel `tb_pelanggan`
+-- Indexes for table `tb_pelanggan`
 --
 ALTER TABLE `tb_pelanggan`
   ADD PRIMARY KEY (`id_pel`);
